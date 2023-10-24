@@ -13,7 +13,7 @@ library(tidyverse)
 library(tools)
 
 # Path to SAS file to be converted
-file = "WIP/sas_to_csv/test.sas7bdat"
+file = "path/to/test.sas7bdat"
 
 base = file_path_sans_ext(file)
 extension = file_ext(file)
@@ -33,7 +33,7 @@ metadata <- metadata %>% rename(name = variable, type = col_type)
 metadata <- metadata %>% mutate(type = replace(type, type == "chr", "text"))
 metadata <- metadata %>% mutate(type = replace(type, type == "dbl", "decimal"))
 # Change type of columns all ending on "DTC" to date
-# This assumes that all date columns in SDTM (and ADaM?) end on "DTC"
+# This assumes that all date columns in SDTM end on "DTC"
 metadata <- metadata %>% mutate(type = replace(type, name %like% ("DTC$"), "date"))
 
 # Write data and metadata to CSV files

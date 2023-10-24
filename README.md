@@ -1,6 +1,6 @@
 # SAS to CSV
 
-Script to convert SAS files to CSV files for upload into FAIR.
+Script to convert SAS files to CSV files for upload into [Aridhia DRE FAIR Data Services](https://www.aridhia.com/fair-data-services/).
 
 ## Usage
 
@@ -12,10 +12,8 @@ Script to convert SAS files to CSV files for upload into FAIR.
 
 ## Notes
 
-* This script is specifically written for SAS files in SDTM format.
+* This script is specifically written for SAS files in [SDTM](https://www.cdisc.org/standards/foundational/sdtm) format.
 * It can be used for both `.sas7bdat` and `.xpt` files.
-* It is assumed that the names of all fields in the SAS file that contain dates end in `DTC`. These are assigned in the metadata file the type `date`.
-* Fields of the type `character` in the SAS file are assigned in the metadata file the type `text`.
-* Fields of the type `double` in the SAS file are assigned in the metadata file the type `decimal`.
-
-
+* It is assumed that the names of all fields in the SAS file that contain dates end in `"DTC"`. These are assigned the type `date` in the metadata file.
+* Fields of the type `character` in the SAS file are assigned the type `text` in the metadata file.
+* Fields of the type `double` in the SAS file are assigned the type `decimal` in the metadata file.
