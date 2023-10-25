@@ -1,10 +1,3 @@
-# Install required packages, if not already installed
-if (!require("data.table")){install.packages("data.table")}
-if (!require("haven")){install.packages("haven")}
-if (!require("labelled")){install.packages("labelled")}
-if (!require("tidyverse")){install.packages("tidyverse")}
-if (!require("tools")){install.packages("tools")}
-
 # Load packages
 library(data.table)
 library(haven)
@@ -19,7 +12,7 @@ base = file_path_sans_ext(file)
 extension = file_ext(file)
 
 # Read in SAS file
-if (extension == "sasb7dat") {
+if (extension == "sas7bdat") {
   df <- read_sas(file)
 } else if (extension == "xpt") {
   df <- read_xpt(file)
@@ -37,5 +30,5 @@ metadata <- metadata %>% mutate(type = replace(type, type == "dbl", "decimal"))
 metadata <- metadata %>% mutate(type = replace(type, name %like% ("DTC$"), "date"))
 
 # Write data and metadata to CSV files
-write.csv(df, paste(base, "_data.csv"), row.names=FALSE)
-write.csv(metadata, paste(base, "_metadata.csv"), row.names=FALSE)
+write.csv(df, paste(base, "_data.csv", sep=""), row.names=FALSE)
+write.csv(metadata, paste(base, "_metadata.csv", sep=""), row.names=FALSE)
